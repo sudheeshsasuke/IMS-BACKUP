@@ -41,13 +41,14 @@ class profile extends database {
     
     public function update_personal_details() {
         //Update participant table
-        $query = "UPDATE participant SET name = :name, email = :email, phone = :phone, 
+        $query = "UPDATE participant SET name = :name, email = :email, phone = :phone 
         WHERE id = :id";     
         $values = array(':name'=>$_POST['name'],
                         ':email'=>$_POST['email'],
                         ':phone'=>$_POST['phone'],
                         ':id' => $_SESSION['id']);
-        $this->query_execute($query,$values);  
+        $this->query_execute($query,$values);
+        $_SESSION['username'] = $_POST['name']; 
     }
 
     public function upload_resume() {

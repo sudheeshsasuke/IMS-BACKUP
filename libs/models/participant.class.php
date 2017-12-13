@@ -46,7 +46,7 @@ class participant extends database {
                 header("Location:http://ims.com/"); 
             }
             else {
-                header("Location:http://ims.com/user/templates/confirmationerror.tpl.php"); 
+                header("Location:http://ims.com/user/templates/invaliduser.tpl.php"); 
             } 
         }       
     }

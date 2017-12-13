@@ -25,8 +25,9 @@
                                 </div>  
                                 <div class="row">                                                   
                                     <div class="col-sm-6 form-group">
-                                    
-                                    <a href = "http://ims.com/<?=htmlentities($personalinfo['resume'])?>"><button type="button" class=" btn-danger"> download resume </button></a>
+                                    <?php if ($personalinfo['resume'] != NULL): ?>
+                                        <a href = "http://ims.com/<?=htmlentities($personalinfo['resume'])?>"><button type="button" class=" btn-danger"> download resume </button></a>
+                                    <?php endif ?>
                                     </div>  
                                 </div>  
                             <?php endforeach; ?>                                                                    

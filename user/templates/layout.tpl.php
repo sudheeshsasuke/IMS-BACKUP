@@ -108,9 +108,13 @@
             </li>       
         <?php  else:?>
          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="" data-toggle="modal" data-target="#RegisterModal">REGISTER/LOGIN</a>
+            <a class="nav-link js-scroll-trigger" href="" data-toggle="modal" data-target="#RegisterModal">REGISTER</a>
+        </li>
+        <li>
+            <a class="nav-link js-scroll-trigger" href="" data-toggle="modal" data-target="#RegisterModal">LOGIN</a>
         </li>
         <?php endif?>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
       </ul>
     </div>
   </div>
@@ -151,10 +155,10 @@
       <div class="col-md-4">
         <ul class="list-inline quicklinks">
           <li class="list-inline-item">
-            <a href="#"></a>
+            <a href="#">Privacy Policy</a>
           </li>
           <li class="list-inline-item">
-            <a href="#"></a>
+            <a href="#">Terms of Use</a>
           </li>
         </ul>
       </div>
@@ -258,6 +262,8 @@
                                         <div class="col-sm-10">
                                             <button type="submit" class="btn btn-primary btn-sm login-btn" >
                                                 Save & Continue</button>
+                                            <button type="button" class="btn btn-default btn-sm" class="close" data-dismiss="modal" aria-hidden="true">
+                                                Cancel</button>
                                         </div>
                                     </div>
                                     <div id="loader" >
@@ -323,6 +329,7 @@ $(document).ready(function(){
 <script src="http://ims.com/user/js/academics.js"></script>	
 <script src="http://ims.com/user/js/experience.js"></script>	
 <script src="http://ims.com/user/js/skill.js"></script>	
+<script src="http://ims.com/user/js/validateinfo.js"></script>	
 
 <script src="http://ims.com/office/dist/js/form_validation.js"></script>
 </body>

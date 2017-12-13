@@ -1,8 +1,6 @@
-
 <?php ob_start();?>
-<html>
-<body>
-    <!-- Main content -->
+
+<!-- Main content -->
 <section class="content">
   <div class="row">
     <div class="col-xs-12">
@@ -17,11 +15,9 @@
       </form>
         <!-- /.box-header -->
         <div class="box-body">
-        
-        <table id="example1" class="table table-bordered table-striped">
-      
-        <?php foreach($interviews as $interview): ?>
-        <tr> 
+         <table id="example1" class="table table-bordered table-striped">
+          <?php foreach($interviews as $interview): ?>
+           <tr> 
             <td>
                 <ul>
                     <li><?php echo htmlentities($interview['title'])?></li>
@@ -38,9 +34,9 @@
                 <!--<button type="button"><a href="/index.php/admin/interview/deleteinterview?id=">Delete</a></button> -->
             
             </td>
-        </tr>
-        <?php endforeach ?>
-        </table>
+           </tr>
+          <?php endforeach ?>
+         </table>
         </div>
         <!-- /.box-body -->
       </div>
@@ -51,12 +47,5 @@
   <!-- /.row -->
 </section>
 <!-- /.content -->
-
-        
-      
-     
-</body>
-
-</html>
 <?php $content = ob_get_clean();?>
 <?php include 'layout.tpl.php' ?>

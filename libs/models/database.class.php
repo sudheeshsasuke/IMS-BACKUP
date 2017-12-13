@@ -3,7 +3,7 @@
 //namespace database;
 
 /*
-* database class to execute query
+*database class to execute query
 */
 class database {
 

@@ -28,20 +28,20 @@
 								<div class="row">
 									<div class="col-sm-6 form-group">
 											<label class="required">Phone Number</label>
-											<input type="text" placeholder="Enter Phone Number Here.." name="phone" value="<?= htmlentities($personalinfo['phone'])?>" class="form-control"required>
+											<input type="text" placeholder="Enter Phone Number Here.." id="phone" name="phone" value="<?= htmlentities($personalinfo['phone'])?>" class="form-control"required>
 									</div>		
 									<div class="col-sm-6 form-group">
 										<label class="required">Email Address</label>
-										<input type="text" placeholder="Enter Email Address Here.." name="email" value="<?= htmlentities($personalinfo['email'])?>" class="form-control" required>
+										<input type="text" placeholder="Enter Email Address Here.." id="emailid" name="email" value="<?= htmlentities($personalinfo['email'])?>" class="form-control" required>
 									</div>
 								</div>	
 								<div class="row">													
 									<div class="col-sm-6 form-group">
-										<label for="fileToUpload" class="required">Upload resume</label></td>
+										<label for="fileToUpload">Upload resume</label></td>
 										<?php if(!empty($personalinfo['resume'])):?>
 										<input type="file" name="fileToUpload" class="form-control">Uploaded resume
 										<?php else: ?>
-										<input type="file" name="fileToUpload" class="form-control" required>
+										<input type="file" name="fileToUpload" class="form-control">
 										<?php endif; ?>
 									</div>	
 								</div>	
@@ -243,7 +243,7 @@
 				</div>
 			</div>
 
-			<input type="submit" class="btn btnprofile submitprofile" value="Submit">
+			<input type="submit" id="profilesubmit" class="btn btnprofile submitprofile" value="Submit">
 		</form> 
 	</body>
 </html>

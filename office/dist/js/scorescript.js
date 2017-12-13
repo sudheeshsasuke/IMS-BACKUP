@@ -34,6 +34,22 @@ $(document).ready(function(){
          });
          return false;
      });
+     //changing select round options
+    $("#select_round").change(function(){
+        var intrvwid = $("#txt_intid").val();
+        var rid = $("#select_round").val();
+        $.ajax({
+            type:"POST",
+            data:{"id":intrvwid,"roundid":rid}, 
+            url: "http://ims.com/admin/score_management", 
+            success: function(result){
+                var response = $(".box-header",result).html();   
+                $("box-header").html(response); 
+            }
+         });
+         return false;
+     });
+
 
     $("#btn_finallist").click(function(){
         var intrvwid = $(this).val();
@@ -65,24 +81,35 @@ $(document).ready(function(){
 
     //checking
     $("#btn_update_confirm").click(function(){
+        
         var intrvwid = $(this).val();
         var rid = $("#select_round").val();
         var checked = [];
         $.each($("input[name='checkedusers[]']:checked"), function(){            
             checked.push($(this).val());
         });
-        $(".loader").css("display","block");
-        $(".modal-body").css("display","none");
-        $.ajax({
-            type:"POST",
-            data:{"id":intrvwid,"roundid":rid,"checkedusers":checked},
-            url: "http://ims.com/admin/score_management/updatestatus",
-            success: function(result) {
-                $(".loader").css("display","none");
-                $(".modal-body").css("display","block");
-                score_display(intrvwid);
-            }
-        });
+        
+        if(checked == "") {
+           
+            alert("No Candidate Selected");
+            
+        }
+        
+        if(checked != "" && rid != "") {
+            $(".loader").css("display","block");
+            $(".modal-body").css("display","none");
+            $.ajax({
+                type:"POST",
+                data:{"id":intrvwid,"roundid":rid,"checkedusers":checked},
+                url: "http://ims.com/admin/score_management/updatestatus",
+                success: function(result) {
+                    $(".loader").css("display","none");
+                    $(".modal-body").css("display","block");
+                    score_display(intrvwid);
+                }
+            });
+        }
+       
         return false;
     });
     
@@ -102,7 +129,8 @@ $(document).ready(function(){
         $.ajax({
            url: "http://ims.com/admin/interview",
             success: function(result) {
-                $('body').html(result);
+                var response = $(".box-body",result).html();
+                $(".box-body").html(response);
             }
        });
     };
@@ -111,8 +139,9 @@ $(document).ready(function(){
        
         $.ajax({
             url: "http://ims.com/admin/round",
-            success: function(result){    
-                $('body').html(result);
+            success: function(result){ 
+                var response = $(".box-body",result).html();   
+                $('.box-body').html(response);
             }
         });
     };

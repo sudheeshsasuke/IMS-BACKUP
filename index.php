@@ -1,18 +1,15 @@
 <?php
 
-/**
- * @file
- * This is index.php.
- */
-
+// index.php
 session_start();
 
-// Load autoloader file.
+// load autoloader file
 require_once 'autoloader.php';
 require_once 'google-api-php-client/vendor/autoload.php';
 $flag = 0;
 
-// TODO: Get request path from php super global $_SERVER.
+// route the request internally
+//TODO: Get request path from php super global $_SERVER 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 //$controller = new Controllers();
@@ -232,7 +229,8 @@ elseif ('/user/comment_action' == $uri) {
 elseif ('/user/logout' == $uri) {
     
   //logout
-  session_destroy(); 
+  session_destroy();
+  
   header("Location:http://ims.com/");  
 }
 elseif ('/admin/score_management' == $uri && $adminController->check_log()) {
@@ -281,7 +279,7 @@ elseif ('/admin/score_management/roundactivate' == $uri && $adminController->che
 elseif ('/admin/score_management/rounddeactivate' == $uri && $adminController->check_log()) {
   $scorecontroller->del_int_round();
 }
-elseif ('/user/forgot_password' == $uri) {		
+elseif ('/user/forgot_password' == $uri) {	
   $userlogincontroller->forgot_password_form();
 }
 elseif('/user/forgot_password_action' == $uri && isset($_POST['recovery_email'])) {		

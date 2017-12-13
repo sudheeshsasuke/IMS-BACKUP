@@ -1,5 +1,4 @@
 <?php ob_start() ?>
-
 <section id="interviews">
     <div class="container">      
         <div class="row">
@@ -87,6 +86,8 @@
                                 <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary btn-sm login-btn">
                                         Save & Continue</button>
+                                    <button type="button" class="btn btn-default btn-sm" class="close" data-dismiss="modal" aria-hidden="true">
+                                        Cancel</button>
                                 </div>
                             </div>
                             <div id="loader" >

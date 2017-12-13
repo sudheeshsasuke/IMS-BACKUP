@@ -9,8 +9,7 @@
                     <p>We will send you an recovery mail to the entered email</p>
                     <form role="form" id="recoverymail" method="post" action="http://ims.com/user/forgot_password_action" class="form-horizontal">
                         <div class="form-group">
-                            <label for="email" class="col-sm-2 control-label">
-                                Recovery Email</label>
+                            <label for="email" class="col-sm-2 control-label">Email</label>
                             <div class="col-sm-10">
                                 <input type="email" class="form-control" name="recovery_email" id="email1" placeholder="Email" />
                             </div>

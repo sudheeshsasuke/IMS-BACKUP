@@ -13,31 +13,19 @@ class model extends database {
         /*$interviews = $this->prepare("SELECT" , "*", "interview", NULL)
                     ->fetch();
         return $interviews;*/
-        $flag = 0;
-        $arr = array(
-            ":id"=>$_SESSION['id'],
-            ':soft_delete' => $flag,
-            ':finished' => $flag
-        );
+        $arr = array(":id"=>$_SESSION['id']);
         $query ="SELECT * FROM `interview` 
         WHERE title NOT IN 
         (SELECT DISTINCT i.title FROM interview_participant ip JOIN interview i ON i.id=ip.int_id 
-        WHERE ip.part_id=:id) AND soft_delete=:soft_delete AND finished=:finished";
+        WHERE ip.part_id=:id)";
         $interviews = $this->query_execute($query,$arr);
         return $interviews;
         
     }
 
     public function get_all_interviews() {
-
-        $flag = 0;
-        $query = "SELECT * FROM `interview` "
-        . " WHERE soft_delete=:soft_delete AND finished=:finished";
-        $values = array(
-            ':soft_delete' => $flag,
-            ':finished' => $flag
-        );
-        $interviews = $this->query_execute($query, $values);
+        $interviews = $this->prepare("SELECT" , "*", "interview", NULL)
+        ->fetch();
         return $interviews;
     }
 
@@ -46,13 +34,13 @@ class model extends database {
 
     //insert interviews into interview table
     public function register() {        
-
+        $active=1;
         $code = rand(100, 1000);
         $code = sha1($code);
         $arra = array(':email'=>$_POST['emailid'],
-                    ':password'=>sha1($_POST['password'])
+                ':active'=>$active
         );
-        $queryi = "SELECT * FROM participant WHERE email=:email";
+        $queryi = "SELECT * FROM participant WHERE email=:email AND active=:active";
         $count = $this->query_execute($queryi, $arra);
         if(empty($count)) { 
             $arr =  array(':name'=>$_POST['name'],
@@ -70,8 +58,8 @@ class model extends database {
         }             
         
         else {
-
-            include 'user/templates/error.tpl.php';
+            header("Location:http://ims.com/user/templates/alreadyregistered.tpl.php");
+            //include 'user/templates/error.tpl.php';
 
         }
     }

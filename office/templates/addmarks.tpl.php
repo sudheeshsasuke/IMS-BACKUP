@@ -4,7 +4,7 @@
         <?php $x=$_GET['id']; ?>
         <?php $y=$_GET['roundid']; ?>
         <?php $z=$_GET['pid']; ?>
-        <form action='/admin/score_management/insertmarks' method="POST">
+        <form action='/admin/score_management/insertmarks' method="POST" >
         <div class="container">
 		      <section class="content">
             <div class="row">
@@ -15,8 +15,8 @@
                       <div>
                         <input type="hidden" name="p_id" value="<?=$z?>">
                         <input type="hidden" name="id" value="<?=$_GET['id']?>">
-                        <label>Round</label><br>
-                        <select name="round" onchange="self.location=''+'?id=<?=$x?>&pid=<?=$z?>&roundid='+this.value"> 
+                        <label>Round <span style="color:red">*</span></label><br>
+                        <select id="selectround" name="round" onchange="self.location=''+'?id=<?=$x?>&pid=<?=$z?>&roundid='+this.value" required> 
                           <option value=" " selected>select round</options>
                           <?php foreach($rounds as $round):?>
                             <?php if($y == $round['id']) {?>
@@ -32,7 +32,8 @@
                         <input type="hidden" name="old_mark" value="<?=$part_score['score']?>" class = "form-control"><br>
                         <label>comment</label><br>                 
                         <textarea rows="4" cols="50" name="comment"  class = "form-control"><?=$part_score['comment']?></textarea><br>
-                        <input class = "btn btn-danger" type="submit" value="Submit">
+                        
+                        <input class = "btn btn-danger" type="submit" value="Submit" onclick="return validate_round();">
                       </table>   
                     </div>
                   </div>

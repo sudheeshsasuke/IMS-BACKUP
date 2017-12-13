@@ -49,8 +49,7 @@ class InterviewParticipant extends database {
     public function display_applied_interview() {
 
         $arr = array(':part_id'=>$_SESSION['id']);
-        $query = "SELECT DISTINCT *  FROM interview_participant ip JOIN interview i ON i.id=ip.int_id WHERE part_id=:part_id "
-        ." AND i.soft_delete='0'";
+        $query = "SELECT DISTINCT *  FROM interview_participant ip JOIN interview i ON i.id=ip.int_id WHERE part_id=:part_id";
         $result = $this->query_execute($query, $arr);
         $query2 = "SELECT s.id, ir.int_id, r.name FROM `score` AS s JOIN `interview_rounds` AS ir 
         ON s.int_round_id = ir.id JOIN `rounds` AS r 

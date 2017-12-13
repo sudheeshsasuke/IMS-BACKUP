@@ -12,10 +12,11 @@
               <tr>
                 <td>
                   <?php if($flag == 0):?>
-                    <select class="btn btn-block btn-success btn-sm" id="select_round" name="round" style="font-size:15px" onchange="self.location=''+'?id=<?=$y?>&roundid='+this.value">
+                    <input type="hidden" id="txt_intid" value="<?= $y;?>">
+                    <select class="btn btn-block btn-success btn-sm" id="select_round" name="round" style="font-size:15px">
                     <option value=" " selected>select one</option>
                       <?php foreach($rounds as $round):?>
-                        <?php if($_GET['roundid'] == $round['id']) {?>
+                        <?php if($_POST['roundid'] == $round['id']) {?>
                           <option value="<?= $round['id']?>" selected><?=$round['name']?></option>
                         <?php }
                         else {?>
@@ -25,7 +26,7 @@
                     </select>
                     </td>
                     <td>
-                      <button class="btn btn-block btn-primary btn-sm"  type="button"  style="font-size:15px" data-toggle="modal" data-target="#update_stat" >Round Update</button>
+                      <button class="btn btn-block btn-primary btn-sm"  type="button"  style="font-size:15px" onclick="return validate_roundupdate();" >Round Update</button>
                     </td>
                     <td>
                       <a href="/admin/new_reg?intid=<?=$y?>"><button class="btn btn-block btn-danger btn-sm"  type="button" style="font-size:15px" >Add candidate</button>
@@ -75,7 +76,7 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Are you sure!!</h4>
+            <h4 class="modal-title">Updating Round Status</h4>
           </div>
           <div class="modal-body">
             Following candidates are getting selected to next round
@@ -85,8 +86,8 @@
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
             <button type="button" id="btn_update_confirm" value="<?=$y?>" class="btn btn-primary">Confirm</button>
           </div>
-      </div>        
-    </div>   
+        </div>        
+      </div>   
   </div>
   <div class="modal fade" id="snd_rpt">
     <div class="modal-dialog">
@@ -172,7 +173,7 @@
         <div class="box-header with-border">
           <h3 class="box-title">ACTIVATE AND DEACTIVATE ROUNDS</h3>
           <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" title data-original-title="Collapse"><i class="fa fa-plus"></i>
             </button>
           </div>
             <!-- /.box-tools -->

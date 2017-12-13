@@ -293,6 +293,7 @@ $(document).ready(function() {
         table.draw();
     } );
 } );
+
 </script>
 <script src="http://ims.com/office/dist/js/form_validation.js"></script>
 <!--filter data table custom script-->
